@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MV BioSciences — Ayurvedic Raw Material Extracts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#EBE3D0;
+  --parchment-deep:#DED2B4;
+  --ink:#2B241A;
+  --forest:#22321F;
+  --forest-deep:#151F13;
+  --gold:#B4842A;
+  --rust:#8C3B2E;
+  --line:rgba(43,36,26,0.18);
+  --radius:2px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+html,body{height:100%;}
+body{
+  margin:0;background:var(--parchment);color:var(--ink);
+  font-family:'Work Sans',ui-sans-serif,system-ui,sans-serif;
+  font-size:16px;line-height:1.6;
+}
+h1,h2,h3,.brand-name{font-family:'Fraunces',Georgia,serif;font-weight:500;color:var(--forest-deep);}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.container{max-width:1080px;margin:0 auto;padding:0 24px;}
+.italic{font-style:italic;}
+
+/* header */
+header{
+  position:sticky;top:0;z-index:50;
+  background:var(--parchment);
+  border-bottom:1px solid var(--line);
+  padding-top:env(safe-area-inset-top,0px);
+}
+.headbar{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1080px;margin:0 auto;}
+.brandblock{display:flex;align-items:center;gap:12px;cursor:pointer;}
+.mark{width:34px;height:34px;flex:0 0 auto;}
+.brandtext{line-height:1.15;}
+.brand-name{font-size:1.15rem;letter-spacing:0.02em;}
+.brand-sub{font-size:0.72rem;color:var(--forest);opacity:0.75;letter-spacing:0.03em;}
+nav{display:flex;gap:28px;align-items:center;}
+nav button.nav-link{
+  background:none;border:none;font:inherit;font-family:'Work Sans',sans-serif;
+  font-size:0.95rem;color:var(--forest-deep);cursor:pointer;padding:4px 0;
+  border-bottom:2px solid transparent;
+}
+nav button.nav-link.active{border-bottom-color:var(--gold);color:var(--rust);}
+.navtoggle{display:none;background:none;border:1px solid var(--line);padding:8px 10px;font-size:1rem;cursor:pointer;color:var(--forest-deep);}
+@media(max-width:760px){
+  nav{position:absolute;top:100%;left:0;right:0;background:var(--parchment);flex-direction:column;align-items:flex-start;padding:10px 24px 20px;border-bottom:1px solid var(--line);display:none;gap:14px;}
+  nav.open{display:flex;}
+  .navtoggle{display:block;}
+}
+
+/* section basics */
+section{display:none;}
+section.active{display:block;}
+.hero{
+  background:linear-gradient(180deg,var(--parchment) 0%,var(--parchment-deep) 100%);
+  padding:72px 0 56px;border-bottom:1px solid var(--line);
+}
+.eyebrow{color:var(--rust);font-size:0.85rem;margin:0 0 14px;}
+.hero h1{font-size:clamp(2rem,4.4vw,3.1rem);line-height:1.08;max-width:16ch;margin:0 0 22px;}
+.hero p.lead{max-width:52ch;font-size:1.08rem;color:var(--ink);opacity:0.88;margin:0 0 30px;}
+.cta-row{display:flex;gap:16px;flex-wrap:wrap;}
+.btn{
+  display:inline-block;padding:13px 26px;font-size:0.95rem;font-weight:500;
+  border:1px solid var(--forest-deep);border-radius:var(--radius);cursor:pointer;
+  font-family:'Work Sans',sans-serif;
+}
+.btn-primary{background:var(--forest-deep);color:var(--parchment);}
+.btn-primary:hover{background:var(--forest);}
+.btn-ghost{background:transparent;color:var(--forest-deep);}
+.btn-ghost:hover{border-color:var(--rust);color:var(--rust);}
+
+.band{padding:56px 0;border-bottom:1px solid var(--line);}
+.band h2{font-size:clamp(1.5rem,2.6vw,2rem);margin:0 0 8px;}
+.band .sub{opacity:0.75;max-width:60ch;margin:0 0 34px;}
+
+.sprig{width:46px;height:46px;color:var(--gold);}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+@media(max-width:760px){.grid3{grid-template-columns:1fr;}}
+.reason h3{font-size:1.05rem;margin:0 0 8px;font-family:'Fraunces',serif;}
+.reason p{margin:0;opacity:0.82;font-size:0.95rem;}
+.reason .num{font-family:'Fraunces',serif;font-style:italic;color:var(--gold);font-size:0.9rem;display:block;margin-bottom:10px;}
+
+/* ledger list for products */
+.ledger{border-top:1px solid var(--line);}
+.ledger-row{
+  display:grid;grid-template-columns:1.6fr 1fr 1.4fr;gap:20px;
+  padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline;
+}
+.ledger-row.head{font-size:0.78rem;text-transform:none;letter-spacing:0.02em;color:var(--forest);opacity:0.65;padding-bottom:10px;}
+@media(max-width:700px){.ledger-row{grid-template-columns:1fr;gap:4px;padding:16px 0;}}
+.ledger-row .latin{font-style:italic;color:var(--ink);}
+.ledger-row .common{opacity:0.75;font-size:0.92rem;}
+.ledger-row .spec{color:var(--forest);font-size:0.92rem;}
+.catalogue-note{margin-top:30px;padding:20px 22px;background:var(--parchment-deep);border-left:3px solid var(--gold);font-size:0.95rem;}
+
+/* certifications */
+.certs{display:flex;flex-wrap:wrap;gap:14px;}
+.cert-badge{
+  border:1px solid var(--forest-deep);padding:10px 18px;font-size:0.88rem;
+  font-family:'Fraunces',serif;color:var(--forest-deep);border-radius:100px;
+}
+.qual-block{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px;}
+@media(max-width:760px){.qual-block{grid-template-columns:1fr;}}
+.qual-block h3{font-size:1.05rem;margin:0 0 10px;}
+.qual-block p{opacity:0.85;font-size:0.95rem;margin:0 0 22px;}
+
+/* about */
+.about-lede{font-size:1.15rem;max-width:62ch;margin:0 0 30px;font-family:'Fraunces',serif;font-weight:400;color:var(--forest-deep);}
+.about-cols{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:10px;}
+@media(max-width:760px){.about-cols{grid-template-columns:1fr;}}
+.about-cols h3{font-size:1rem;margin:0 0 10px;color:var(--rust);font-family:'Work Sans',sans-serif;font-weight:600;}
+.about-cols p{opacity:0.85;font-size:0.96rem;}
+.pillars{list-style:none;padding:0;margin:24px 0 0;border-top:1px solid var(--line);}
+.pillars li{padding:16px 0;border-bottom:1px solid var(--line);display:flex;gap:18px;}
+.pillars .yr{font-family:'Fraunces',serif;font-style:italic;color:var(--gold);min-width:64px;}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;}
+@media(max-width:760px){.contact-grid{grid-template-columns:1fr;}}
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:0.85rem;margin-bottom:6px;color:var(--forest);}
+.field input,.field select,.field textarea{
+  width:100%;padding:11px 12px;border:1px solid var(--line);background:var(--parchment-deep);
+  font-family:'Work Sans',sans-serif;font-size:0.95rem;color:var(--ink);border-radius:var(--radius);
+}
+.field textarea{min-height:100px;resize:vertical;}
+.contact-info dt{font-family:'Fraunces',serif;color:var(--rust);font-size:0.85rem;margin-top:20px;}
+.contact-info dd{margin:4px 0 0;opacity:0.85;}
+.form-msg{display:none;margin-top:14px;padding:12px 14px;background:var(--parchment-deep);border-left:3px solid var(--forest);font-size:0.9rem;}
+.form-msg.show{display:block;}
+
+footer{padding:34px 0 44px;font-size:0.85rem;opacity:0.7;padding-bottom:calc(44px + env(safe-area-inset-bottom,0px));}
+footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --parchment:#20291D;--parchment-deep:#182018;--ink:#E7DFC9;--forest:#B7C9A8;--forest-deep:#EDE6D2;
+    --line:rgba(231,223,201,0.18);
+  }
+  :root:not([data-theme="light"]) .btn-primary{background:var(--gold);color:#1B1608;border-color:var(--gold);}
+  :root:not([data-theme="light"]) .btn-primary:hover{background:#C79A44;}
+  :root:not([data-theme="light"]) .cert-badge{border-color:var(--forest-deep);}
+}
+:root[data-theme="dark"]{
+  --parchment:#20291D;--parchment-deep:#182018;--ink:#E7DFC9;--forest:#B7C9A8;--forest-deep:#EDE6D2;
+  --line:rgba(231,223,201,0.18);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="headbar">
+    <div class="brandblock" onclick="go('home')">
+      <svg class="mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24 42C24 42 8 33 8 18C8 10 15 6 24 6C33 6 40 10 40 18C40 33 24 42 24 42Z" stroke="currentColor" stroke-width="1.4" style="color:var(--forest-deep)"/>
+        <path d="M24 42V10" stroke="currentColor" stroke-width="1.4" style="color:var(--gold)"/>
+        <path d="M24 16C24 16 17 15 15 20C21 21 24 16 24 16Z" fill="currentColor" style="color:var(--gold)"/>
+        <path d="M24 24C24 24 31 23 33 28C27 29 24 24 24 24Z" fill="currentColor" style="color:var(--rust)"/>
+      </svg>
+      <div class="brandtext">
+        <div class="brand-name">MV BioSciences</div>
+        <div class="brand-sub">A Malde Ventures Company</div>
+      </div>
+    </div>
+    <button class="navtoggle" onclick="document.getElementById('mainnav').classList.toggle('open')" aria-label="Menu">☰</button>
+    <nav id="mainnav">
+      <button class="nav-link" data-p="home" onclick="go('home')">Home</button>
+      <button class="nav-link" data-p="about" onclick="go('about')">About</button>
+      <button class="nav-link" data-p="products" onclick="go('products')">Products</button>
+      <button class="nav-link" data-p="quality" onclick="go('quality')">Quality</button>
+      <button class="nav-link" data-p="contact" onclick="go('contact')">Contact</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="hero container">
+    <p class="eyebrow">Distributors of Ayurvedic Raw Materials</p>
+    <h1>Standardized botanical extracts, supplied with precision.</h1>
+    <p class="lead">MV BioSciences supplies pharmacopoeia-grade Ayurvedic extracts, powders and botanical raw materials to end-product manufacturers and wholesalers — backed by documentation you can put in front of your own quality team.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" onclick="go('products')">View our range</a>
+      <a class="btn btn-ghost" onclick="go('contact')">Request a quote</a>
+    </div>
+  </div>
+
+  <div class="band container">
+    <h2>Why manufacturers source through us</h2>
+    <p class="sub">A distribution partner that treats sourcing as seriously as you treat formulation.</p>
+    <div class="grid3">
+      <div class="reason"><span class="num">Consistency</span><h3>Batch-to-batch reliability</h3><p>Every lot is standardized to a stated marker — alkaloids, saponins, tannins or the active your formulation depends on — so your spec sheet doesn't move.</p></div>
+      <div class="reason"><span class="num">Documentation</span><h3>Paperwork ready to audit</h3><p>Certificates of analysis, MSDS and certification copies accompany every shipment, so your compliance team isn't chasing us for paperwork.</p></div>
+      <div class="reason"><span class="num">Range</span><h3>200+ ingredients, 10 forms</h3><p>Extract powders, granules, distillates, liquids, pastes, raw herb powders, medicated oils and ghrit — sourced from a single, vetted supply chain.</p></div>
+    </div>
+  </div>
+
+  <div class="band container">
+    <h2>A selection from our current range</h2>
+    <p class="sub">Ready-stock botanicals available now. The full catalogue runs to over 200 ingredients.</p>
+    <div class="ledger">
+      <div class="ledger-row head"><div>Botanical</div><div>Common name</div><div>Standardization</div></div>
+      <div class="ledger-row"><div class="latin">Chlorophytum borivilianum</div><div class="common">Safed Musli</div><div class="spec">Saponins up to 30%</div></div>
+      <div class="ledger-row"><div class="latin">Glycyrrhiza glabra</div><div class="common">Liquorice / Yastimadh</div><div class="spec">Glycyrrhizin up to 25%</div></div>
+      <div class="ledger-row"><div class="latin">Moringa oleifera</div><div class="common">Moringa</div><div class="spec">Alkaloids up to 1.0%</div></div>
+      <div class="ledger-row"><div class="latin">Asparagus racemosus</div><div class="common">Shatavari</div><div class="spec">Saponins up to 35%</div></div>
+      <div class="ledger-row"><div class="latin">Bacopa monnieri</div><div class="common">Brahmi</div><div class="spec">Bacosides up to 20%</div></div>
+      <div class="ledger-row"><div class="latin">Withania somnifera</div><div class="common">Ashwagandha</div><div class="spec">Withanolides, on request</div></div>
+    </div>
+    <div class="cta-row" style="margin-top:26px;">
+      <a class="btn btn-ghost" onclick="go('products')">See the full range</a>
+    </div>
+  </div>
+
+  <div class="band container" style="border-bottom:none;">
+    <h2>Manufactured to certified standards</h2>
+    <p class="sub">Our current supply is produced at an FDA, GMP and ISO-certified facility operating since the late 1980s.</p>
+    <div class="certs">
+      <span class="cert-badge">GMP</span><span class="cert-badge">US FDA</span><span class="cert-badge">ISO 9001</span><span class="cert-badge">ISO 22000</span><span class="cert-badge">HACCP</span><span class="cert-badge">Halal</span><span class="cert-badge">Kosher</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="band container" style="padding-top:56px;">
+    <p class="eyebrow">About Us</p>
+    <p class="about-lede">MV BioSciences is the botanical raw materials distribution arm of Malde Ventures, built to give Ayurvedic and herbal manufacturers a dependable, well-documented supply line — without the overhead of managing sourcing directly.</p>
+    <div class="about-cols">
+      <div>
+        <h3>What we do</h3>
+        <p>We supply standardized Ayurvedic extracts and botanical raw materials to two kinds of buyers: end-product manufacturers who formulate nutraceuticals, cosmetics, personal care and herbal medicine, and wholesalers who need a steady, verifiable upstream source. We are starting our supply with the extensive range manufactured by an established, certified Ayurvedic extraction facility, and expanding our own sourcing network from there.</p>
+        <h3>Who we serve</h3>
+        <p>Nutraceutical and herbal formulators, cosmetic and personal-care manufacturers, Ayurvedic medicine producers, and wholesale traders who move botanical raw materials onward to their own customers.</p>
+      </div>
+      <div>
+        <h3>How we work</h3>
+        <p>Every order is placed against a stated standardization spec, with a certificate of analysis provided per batch. We hold relationships with our supply partners directly, so pricing, lead times and minimum order quantities are things we can actually negotiate on your behalf — not just relay.</p>
+        <h3>Malde Ventures</h3>
+        <p>MV BioSciences operates under Malde Ventures, the parent company. Malde Ventures' focus with this venture is building long-term, trust-based supply relationships in the Ayurvedic and natural ingredients space — for manufacturers who need a raw material partner they don't have to double-check.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="band container" style="padding-top:56px;">
+    <p class="eyebrow">Products</p>
+    <h2>Our range of botanical extracts</h2>
+    <p class="sub">Available as extract powders, granules, distillates, liquids, pastes, raw herb powders, medicated oils and ghrit. Ready-stock items below; the complete catalogue covers 200+ ingredients.</p>
+    <div class="ledger">
+      <div class="ledger-row head"><div>Botanical</div><div>Common name</div><div>Standardization</div></div>
+      <div class="ledger-row"><div class="latin">Embelia ribes</div><div class="common">Vidanga / Vavding</div><div class="spec">Alkaloids up to 1.0%, Tannins up to 8.0%</div></div>
+      <div class="ledger-row"><div class="latin">Bergenia ciliata</div><div class="common">Pashanbheda</div><div class="spec">Tannins up to 15%</div></div>
+      <div class="ledger-row"><div class="latin">Vigna unguiculata</div><div class="common">Kulathi / Kalathi</div><div class="spec">Saponins up to 15%</div></div>
+      <div class="ledger-row"><div class="latin">Chlorophytum borivilianum</div><div class="common">Safed Musli</div><div class="spec">Saponins up to 30%</div></div>
+      <div class="ledger-row"><div class="latin">Glycyrrhiza glabra</div><div class="common">Yastimadh / Liquorice</div><div class="spec">Glycyrrhizin up to 25%</div></div>
+      <div class="ledger-row"><div class="latin">Moringa oleifera</div><div class="common">Sargavo / Moringa</div><div class="spec">Alkaloids up to 1.0%</div></div>
+      <div class="ledger-row"><div class="latin">Vitex negundo</div><div class="common">Nagod / Nirgundi</div><div class="spec">Alkaloids up to 1.2%</div></div>
+      <div class="ledger-row"><div class="latin">Swertia chirata</div><div class="common">Chireta / Kariyatu</div><div class="spec">Bitters up to 5.0%</div></div>
+      <div class="ledger-row"><div class="latin">Cassia angustifolia</div><div class="common">Senna / Sonmukhi</div><div class="spec">Sennosides up to 15%</div></div>
+      <div class="ledger-row"><div class="latin">Rheum emodi</div><div class="common">Revanchinni</div><div class="spec">Anthraquinones up to 5%</div></div>
+      <div class="ledger-row"><div class="latin">Curculigo orchioides</div><div class="common">Kalimusli / Black Musli</div><div class="spec">Saponins up to 20%</div></div>
+      <div class="ledger-row"><div class="latin">Asparagus racemosus</div><div class="common">Shatavari / Satamuli</div><div class="spec">Saponins up to 35%</div></div>
+      <div class="ledger-row"><div class="latin">Bacopa monnieri</div><div class="common">Brahmi</div><div class="spec">Bacosides up to 20%</div></div>
+      <div class="ledger-row"><div class="latin">Berberis aristata</div><div class="common">Daruhaldar</div><div class="spec">Berberine up to 12%</div></div>
+      <div class="ledger-row"><div class="latin">Andrographis paniculata</div><div class="common">Kalmegh</div><div class="spec">Andrographolides up to 6%</div></div>
+      <div class="ledger-row"><div class="latin">Acacia catechu</div><div class="common">Khadir / Kher Chhal</div><div class="spec">Tannins up to 10%</div></div>
+      <div class="ledger-row"><div class="latin">Morinda citrifolia</div><div class="common">Noni</div><div class="spec">Morindine up to 18%</div></div>
+      <div class="ledger-row"><div class="latin">Azadirachta indica</div><div class="common">Neem / Nimba</div><div class="spec">Bitters up to 5%, Oil up to 3%</div></div>
+    </div>
+    <div class="catalogue-note">Looking for a specific botanical, form or standardization not listed here? Our range extends well beyond ready stock — <a onclick="go('contact')" style="color:var(--rust);text-decoration:underline;cursor:pointer;">send us your requirement</a> and we'll confirm availability, MOQ and lead time.</div>
+  </div>
+</section>
+
+<!-- QUALITY -->
+<section id="quality">
+  <div class="band container" style="padding-top:56px;">
+    <p class="eyebrow">Quality</p>
+    <h2>Sourced and manufactured to certified standards</h2>
+    <p class="sub">Our current supply comes from a manufacturing partner audited against the following standards, with certificates available on request for every certification.</p>
+    <div class="certs">
+      <span class="cert-badge">GMP</span><span class="cert-badge">US FDA</span><span class="cert-badge">ISO 9001</span><span class="cert-badge">ISO 22000</span><span class="cert-badge">HACCP</span><span class="cert-badge">Halal</span><span class="cert-badge">Kosher</span>
+    </div>
+    <div class="qual-block">
+      <div>
+        <h3>Sourcing</h3>
+        <p>Herbs are sourced across India at their peak season, verified against the standards of the Ayurvedic Pharmacopoeia of India before they enter the extraction process.</p>
+        <h3>Testing</h3>
+        <p>Every ingredient is screened against microbial and physico-chemical standards in-house, with lab equipment capable of catching irregularities across batches before they reach you.</p>
+      </div>
+      <div>
+        <h3>Manufacturing capacity</h3>
+        <p>The facility we currently supply from can process up to 5 metric tonnes per work shift, with over three decades of standing in aqueous botanical extraction.</p>
+        <h3>Traceability</h3>
+        <p>Each shipment is accompanied by a certificate of analysis stating the tested standardization value, so what's on the spec sheet is what arrives at your dock.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="band container" style="padding-top:56px;border-bottom:none;">
+    <p class="eyebrow">Contact</p>
+    <h2>Request a quote</h2>
+    <p class="sub">Tell us what you need — botanical, form and quantity — and we'll come back with availability, pricing and lead time.</p>
+    <div class="contact-grid">
+      <form id="quoteForm" onsubmit="return handleSubmit(event)">
+        <div class="field"><label for="cname">Full name</label><input id="cname" required></div>
+        <div class="field"><label for="ccompany">Company</label><input id="ccompany" required></div>
+        <div class="field"><label for="cemail">Email</label><input id="cemail" type="email" required></div>
+        <div class="field"><label for="cphone">Phone</label><input id="cphone" type="tel"></div>
+        <div class="field"><label for="ctype">Buyer type</label>
+          <select id="ctype"><option>End-product manufacturer</option><option>Wholesaler / Trader</option><option>Other</option></select>
+        </div>
+        <div class="field"><label for="cmsg">Product & quantity required</label><textarea id="cmsg" required placeholder="e.g. Ashwagandha extract, Withanolides 5%, 500 kg/month"></textarea></div>
+        <button type="submit" class="btn btn-primary">Send inquiry</button>
+        <div class="form-msg" id="formMsg">Thank you — your inquiry has been noted. Our team will get back to you shortly.</div>
+      </form>
+      <dl class="contact-info">
+        <dt>Company</dt><dd>MV BioSciences, a Malde Ventures company</dd>
+        <dt>Email</dt><dd>sales@mvbiosciences.com</dd>
+        <dt>Phone</dt><dd>+91 00000 00000</dd>
+        <dt>Office</dt><dd>Mumbai, Maharashtra, India</dd>
+        <dt>Response time</dt><dd>We typically reply within one business day with pricing and lead time.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <span>© 2026 MV BioSciences — A Malde Ventures Company</span>
+    <span>Ayurvedic raw materials for manufacturers &amp; wholesalers</span>
+  </div>
+</footer>
+
+<script>
+function go(page){
+  document.querySelectorAll('section').forEach(s=>s.classList.toggle('active', s.id===page));
+  document.querySelectorAll('.nav-link').forEach(b=>b.classList.toggle('active', b.dataset.p===page));
+  document.getElementById('mainnav').classList.remove('open');
+  window.scrollTo(0,0);
+  history.replaceState(null,'','#'+page);
+}
+(function init(){
+  const p = location.hash.replace('#','') || 'home';
+  if(document.getElementById(p)) go(p); else go('home');
+})();
+function handleSubmit(e){
+  e.preventDefault();
+  document.getElementById('formMsg').classList.add('show');
+  e.target.reset();
+  return false;
+}
+</script>
+</body>
+</html>
